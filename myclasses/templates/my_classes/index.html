@@ -2,76 +2,17 @@
 <html lang="en">
 
 <head>
+    <title>My Classes</title>
     <meta charset="UTF-8">
     <meta name ="viewport" content=""width=device-width, initial_scale=1.0">
-    <title>My Classes</title>
-    <style>
-        :root {
-            --sb_width: 200px;
-        }
-        /* nav menu */
-        .sidebar {
-            margin: 0;
-            padding: 0;
-            width: var(--sb_width);
-            background-color:#f1f1f1;
-            position: fixed;
-            height: 100;
-            overflow: auto;
-        }
-
-        /* sidebar links */
-        .sidebar a {
-            display: block;
-            color: black;
-            padding: 16px;
-            text-decoration: none;
-        }
-
-        /* active link */
-        .sidebar a.active {
-            background-color: #04AA6D;
-            color: white;
-        }
-
-        /* mouseover */
-        .sidebar a:hover:not(.active) {
-            background-color: #555;
-            color: white;
-        }
-
-        /* page content (margin-left == sidebar width) */
-        div.content {
-            margin-left: var(--sb_width);
-            padding: 1px 16px;
-            height: 100px;
-        }
-
-        /* convert sidebar to topbar on smaller screens */
-        @media screen and (max-width: 700px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            .sidebar a {float: left;}
-            div.content{margin-left: 0;}
-        }
-
-        /*displays sidebar vertically on super small screens */
-        @media screen and (max-width: 100px) {
-            .sidebar a {
-                text-align: center;
-                float: none;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="../../../static/css/styles.css"> 
 </head>
 
 <body>
     <div class = "sidebar">
-       <a class = "active" href="#myclasses">My Class </a>
+       <a class = "active" href="index.html">My Class </a>
+       <a href="upload_page.html">Upload Documents </a>
+       <a href="upload_page.html">Upload Documents </a>
        <!-- COPY, REPEAT-->
     </div>
 
