@@ -18,15 +18,6 @@ class LearningProfile(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
-class Note(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=255)
-    content = models.TextField()
-    upload_date = models.DateTimeField(auto_now_add=True)
-    note = models.FileField(upload_to='notes/')
-
-    def __str__(self):
-        return self.title
 
 class Syllabus(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -41,7 +32,16 @@ class Syllabus(models.Model):
     def getTitle(title):
         return os.path.join(settings.BASE_DIR, f"study/templates/study/class_{title}.html")
     
-    #move this
+class Note(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    upload_date = models.DateTimeField(auto_now_add=True)
+    note = models.FileField(upload_to='notes/')
+    className = models.ForeignKey(Syllabus, on_delete=models.CASCADE)
+    summary = models.TextField(blank=True, null=True)
+    def __str__(self):
+        return self.title
     
     
 
