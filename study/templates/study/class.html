@@ -4,6 +4,23 @@
     <header>
         <h1>My Classes</h1>
 
+{% block title %}My Classes
+<link rel="stylesheet" href="../../static/css/styles.css">{% endblock %}
+            
+{% block content %}
+        <div class="tile">
+            <h2>Notes</h2>
+            <p>
+                {% block logistics %} {% endblock %}
+            </p>
+        </div>
+        <div class="tile">
+            <h2>Topics</h2>
+            <p>
+                {% block notes %} {% endblock %}
+            </p>
+        </div>
+{% endblock %}
     </header>
 </div>
 {%endblock content%}
