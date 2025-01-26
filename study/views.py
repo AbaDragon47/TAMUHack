@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from users.models import Note, Syllabus
 from django.conf import settings
 
-openai.api_key = "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"
+openai.api_key = ""
 
 def notes_view(request, title, syllabus_id):
     user = request.user
@@ -37,6 +37,7 @@ def notes_view(request, title, syllabus_id):
             )
 
             try:
+                ###
                 response = openai.completions.create(
                 model="gpt-3.5-turbo",
                 prompt=f"Summarize the following text:\n{content}",
@@ -49,7 +50,7 @@ def notes_view(request, title, syllabus_id):
             except openai.OpenAIError as e:
                 note.summary = f"Error summarizing note: {str(e)}"
                 note.save()
-
+            ####
 
     # Check if there are any notes and pass a flag
     notes_exist = notes.exists()
