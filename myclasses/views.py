@@ -47,3 +47,6 @@ def class_detail(request, title):
         'notes': notes,
         'topics': topics
     })
+
+def assessment(request):
+    return render(request, 'myclasses/assessment.html',{'title':'Assessment'})
