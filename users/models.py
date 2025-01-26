@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import os
+from django.conf import settings
 # Create your models here.
 
 
@@ -34,6 +36,13 @@ class Syllabus(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def getTitle(title):
+        return os.path.join(settings.BASE_DIR, f"study/templates/study/class_{title}.html")
+    
+    #move this
+    
+    
 
 '''class StudySession(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

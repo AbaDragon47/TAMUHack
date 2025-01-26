@@ -1,26 +1,31 @@
 {% extends 'myclasses/base.html' %}
-{%block content%}
+{% block content %}
 <div class="content">
     <header>
-        <h1>My Classes</h1>
-
-{% block title %}My Classes
-<link rel="stylesheet" href="../../static/css/styles.css">{% endblock %}
-            
-{% block content %}
+        <h1>Class Details</h1>
+        
+        {% block title %}
+            <h2>{% block thisclass %}{{ syllabus.title }}{% endblock %}</h2>
+            <link rel="stylesheet" href="../../static/css/styles.css">
+        {% endblock %}
+        
         <div class="tile">
             <h2>Notes</h2>
             <p>
-                {% block logistics %} {% endblock %}
+                {% block notes %}
+                    {{ notes }}
+                {% endblock %}
             </p>
         </div>
+        
         <div class="tile">
             <h2>Topics</h2>
             <p>
-                {% block notes %} {% endblock %}
+                {% block topics %}
+                    {{ topics }}
+                {% endblock %}
             </p>
         </div>
-{% endblock %}
     </header>
 </div>
-{%endblock content%}
+{% endblock %}

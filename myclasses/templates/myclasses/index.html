@@ -21,6 +21,7 @@
     {% for syllabus in classes %}
     <div class="tile">
         <h2>{{syllabus.title}}</h2>
+        <a href="{%url 'detail' syllabus.title%}">access notes</a>
     </div>
     {% endfor %}
     </section>

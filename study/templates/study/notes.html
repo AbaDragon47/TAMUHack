@@ -2,6 +2,20 @@
 {% block title %} Notes
 <link rel="stylesheet" href="../../static/css/styles.css">{% endblock %}
 
-{% block content %} <header>Notes</header>
+{% block content %} <header>Notes</<div class="form-group">
+    <form action="{% url 'notes' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Syllabus Title</label>
+            <input type="text" name="title" id="title" class="form-control" required>
+        </div> <br>
+        <div class="form-group">
+            <label for="syllabus">Upload Syllabus</label>
+            <input type="file" name="syllabus" id="syllabus" class="form-control" required>
+            <p id = "fileName"></p></span>
+        </div> <br>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>header>
 {% block notematerial %}{% endblock %}
 {% endblock %}
