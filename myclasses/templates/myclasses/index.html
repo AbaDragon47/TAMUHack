@@ -8,23 +8,15 @@
 </header>
 <br>
 <h1>Dashboard</h1>
-<h2>Uploaded Files:</h2>
 <ul>
+    <div class="tiles-container">
     {% for syllabus in classes %}
-    <li>{{ syllabus.title }} - <a href="{{ syllabus.syllabus_file.url }}" target="_blank">Download</a></li>
-
-    {% empty %}
-    <p>No syllabi uploaded yet.</p>
-    {% endfor %}
-
-    <section class="tiles-container"></section>
-    {% for syllabus in classes %}
-    <div class="tile">
+    <a class="tile" href="{%url 'detail' syllabus.title%}">
         <h2>{{syllabus.title}}</h2>
-        <a href="{%url 'detail' syllabus.title%}">access notes</a>
-    </div>
+        <!-- <a href="{%url 'detail' syllabus.title%}">access notes</a> -->
+    </a>
     {% endfor %}
-    </section>
+</div>
 </ul>
 
 <!-- Upload Syllabus Form -->
