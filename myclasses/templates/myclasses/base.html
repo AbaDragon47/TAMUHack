@@ -3,7 +3,7 @@
     <html lang="en">
 
     <head>
-        <title>Home </title>
+        <title> {% block title %}Home{% endblock %}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="" width=device-width, initial_scale="1.0">
         <script src="../../static/js/functions.js"></script>
@@ -15,7 +15,6 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="{% url 'site-home' %}"> Home </a>
             <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'myClasses' %}"> My Classes </a>
             <a href="{% url 'upload' %}">Upload Documents </a>
             <a href="{% url 'performance' %}"> Performance </a>
             <!-- COPY, REPEAT-->
@@ -24,7 +23,7 @@
         <!-- Page content -->
         <div id="main">
             <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
-            {%block content%}{%endblock%}
+            {% block content %} stuff {% endblock %}
         </div>
     </body>
 
