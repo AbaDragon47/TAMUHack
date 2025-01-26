@@ -1,6 +1,6 @@
 {% extends 'myclasses/base.html' %}
+{%block content%}
 <p>yippe</p>
-
 
 <div>
     <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
@@ -27,3 +27,4 @@
     {% endfor %}
     </section>section>
 </ul>
+{%endblock content%}
