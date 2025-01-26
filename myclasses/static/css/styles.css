@@ -43,6 +43,7 @@
 /*the button to open the sidebar*/
 .openbtn {
     font-size: 20px;
+    margin-bottom: 50px;
     cursor: pointer;
     background-color: #532980;
     color: white;
@@ -69,10 +70,13 @@
 /* style.css */
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #532980;
+    color: #fdfdff;
     text-align: center;
     padding: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: medium;
 }
 
 main {

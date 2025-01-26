@@ -3,7 +3,10 @@
 {% block title %}Welcome!{% endblock %}
 
 {% block content %}
-<header>Welcome!</header><br>
+<header><h1>Welcome to Mucera!</h1>
+    <h2>Upload a Syllabus or Log In To Get Started!</h2>
+</header>
+<br>
 <div>
     <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
