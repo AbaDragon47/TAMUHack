@@ -11,7 +11,6 @@
 <h2>Uploaded Files:</h2>
 <ul>
     {% for syllabus in classes %}
-    <li>{{ syllabus.title }} - <a href="{{ syllabus.syllabus_file.url }}" target="_blank">Download</a></li>
 
     {% empty %}
     <p>No syllabi uploaded yet.</p>
