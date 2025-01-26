@@ -88,10 +88,13 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: 35px;
 }
 
 .tile {
-    flex: 1 0 300px;
+    flex: 0 0 100px;
+    width: 50%;
+    height: auto;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
