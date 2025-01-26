@@ -1,4 +1,4 @@
-{%load static%}
+
 <DOCTYPE! html>
 <html lang="en">
 
@@ -6,12 +6,15 @@
     <title>Home </title>
     <meta charset="UTF-8">
     <meta name ="viewport" content=""width=device-width, initial_scale="1.0">
+    <script src="../../static/js/functions.js"></script>
     <link rel="stylesheet" href="../../static/css/styles.css">
 </head>
 
 <body>
-    <div class = "sidebar">
-       <a class = "active" href="{% url 'login' %}">Login</a>
+    <div id = "collapsableSidebar" class = "sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'site-home' %}"> Home </a>
+       <a href="{% url 'login' %}">Login</a>
        <a href="{% url 'myClasses' %}"> My Classes </a>
        <a href="{% url 'upload' %}">Upload Documents </a>
        <a href="{% url 'performance' %}"> Performance </a>
@@ -19,9 +22,10 @@
     </div>
 
     <!-- Page content -->
-    <div class="content">
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
         <p>yippe</p>
-    </div>
+    
 
     <div>
         <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
@@ -45,6 +49,7 @@
         <p>No syllabi uploaded yet.</p>
         {% endfor %}
     </ul>
+</div>
 </body>
 
 </html>

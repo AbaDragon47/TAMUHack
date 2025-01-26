@@ -3,57 +3,66 @@
 }
 /* nav menu */
 .sidebar {
-    margin: 0;
-    padding: 0;
-    width: var(--sb_width);
-    background-color:#f1f1f1;
+    height: 100%;
+    width: 0;
     position: fixed;
-    overflow: auto;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#532980;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
 /* sidebar links */
 .sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
+    font-size: 25px;
+    color: #f0fff1;
+    display: block;
+    transition: 0.3s;
+    
 }
 
-/* active link */
-.sidebar a.active {
-    background-color: #04AA6D;
+/*on hover*/
+.sidebar a:hover {
+    color: #b3e9c7;
+}
+
+/* the x button to close the sidebar */
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/*the button to open the sidebar*/
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #532980;
     color: white;
+    padding: 10px 15px;
+    border: none;
 }
 
-/* mouseover */
-.sidebar a:hover:not(.active) {
-    background-color: #555;
-    color: white;
+/*when you hover over the button*/
+.openbtn:hover {
+    background-color: #8367c7;
 }
 
-/* page content (margin-left == sidebar width) */
-div.content {
-    margin-left: var(--sb_width);
-    padding: 1px 16px;
-    height: 100px;
+#main {
+    transition: margin-left 0.5s;
+    padding: 20px;
 }
 
-/* convert sidebar to topbar on smaller screens */
-@media screen and (max-width: 700px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-    .sidebar a {float: left;}
-    div.content{margin-left: 0;}
-}
-
-/*displays sidebar vertically on super small screens */
-@media screen and (max-width: 100px) {
-    .sidebar a {
-        text-align: center;
-        float: none;
-    }
+/* sidebar on small screens */
+@media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
 }
 
