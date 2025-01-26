@@ -1,62 +1,29 @@
+{% extends 'base.html' %}
+<p>yippe</p>
 
-<DOCTYPE! html>
-<html lang="en">
 
-<head>
-    <title>Home </title>
-    <meta charset="UTF-8">
-    <meta name ="viewport" content=""width=device-width, initial_scale="1.0">
-    <script src="../../static/js/functions.js"></script>
-    <link rel="stylesheet" href="../../static/css/styles.css">
-</head>
-
-<body>
-    <div id = "collapsableSidebar" class = "sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{% url 'site-home' %}"> Home </a>
-       <a href="{% url 'login' %}">Login</a>
-       <a href="{% url 'myClasses' %}"> My Classes </a>
-       <a href="{% url 'upload' %}">Upload Documents </a>
-       <a href="{% url 'performance' %}"> Performance </a>
-       <!-- COPY, REPEAT-->
-    </div>
-
-    <!-- Page content -->
-    <div id="main">
-        <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
-        <p>yippe</p>
-    
-
-    <div>
-        <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="title">Syllabus Title</label>
-                <input type="text" name="title" id="title" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="syllabus">Upload Syllabus</label>
-                <input type="file" name="syllabus" id="syllabus" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Upload</button>
-        </form>
-    </div>
-    <h2>Uploaded Syllabi</h2>
-    <ul>
-        <section class="tiles-container"></section>
-        {% for syllabus in classes %}
-        <li>{{ syllabus.title }} - <a href="{{ syllabus.syllabus_file.url }}" target="_blank">Download</a></li>
-        
-
-        
-        {% empty %}
-        <p>No syllabi uploaded yet.</p>
-        {% endfor %}
-        </section>section>
-    </ul>
+<div>
+    <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Syllabus Title</label>
+            <input type="text" name="title" id="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="syllabus">Upload Syllabus</label>
+            <input type="file" name="syllabus" id="syllabus" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
 </div>
-</body>
+<h2>Uploaded Syllabi</h2>
+<ul>
+    <section class="tiles-container"></section>
+    {% for syllabus in classes %}
+    <li>{{ syllabus.title }} - <a href="{{ syllabus.syllabus_file.url }}" target="_blank">Download</a></li>
 
-</html>
-
-</DOCTYPE!>
+    {% empty %}
+    <p>No syllabi uploaded yet.</p>
+    {% endfor %}
+    </section>section>
+</ul>

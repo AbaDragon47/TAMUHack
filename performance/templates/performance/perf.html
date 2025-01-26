@@ -1,28 +1,4 @@
-<DOCTYPE! html>
-<html lang="en">
-
-<head>
-    <title>Performance</title>
-    <meta charset="UTF-8">
-    <meta name ="viewport" content=""width=device-width, initial_scale="1.0">
-    <link rel="stylesheet" href="../../static/css/styles.css">
-</head>
-
-<body>
-    <!-- body structure: sidebar, timeline, notes, analytics, study section-->
-    <div class = "sidebar">
-        <a href="{% url 'site-home' %}"> Home </a>
-        <a href="{% url 'myClasses' %}"> My Classes </a>
-        <a href="{% url 'upload' %}"> Upload Documents </a>
-        <a class="active" href="{% url 'performance' %}"> Performance </a>
-        <!-- COPY, REPEAT-->
-     </div>
-
-     <div class = "content">
-        <h1>performance</h1>
-     </div>
-</body>
-
-</html>
-
-</DOCTYPE!>
+{% extends 'myclasses/base.html' %}
+<div class="content">
+    <h1>performance</h1>
+</div>
