@@ -28,6 +28,7 @@ class Note(models.Model):
 class Syllabus(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
+    syllabus = models.FileField(upload_to='syllabuses/')
     content = models.TextField()
     upload_date = models.DateTimeField(auto_now_add=True)
 

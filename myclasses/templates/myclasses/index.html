@@ -1,3 +1,4 @@
+{%load static%}
 <DOCTYPE! html>
 <html lang="en">
 
@@ -9,19 +10,42 @@
 </head>
 
 <body>
-    <div class = "sidebar">
-       <a class = "active" href="{% url 'myClasses' %}">My Class </a>
-       <a href="{% url 'upload' %}">Upload Documents </a>
-       <a href="{% url 'upload' %}">Upload Documents </a>
-       <!-- COPY, REPEAT-->
+    <div class="sidebar">
+        <a class="active" href="{% url 'myClasses' %}">My Class </a>
+        <a href="{% url 'upload' %}">Upload Documents </a>
+        <a href="{% url 'upload' %}">Upload Documents </a>
+        <!-- COPY, REPEAT-->
     </div>
 
     <!-- Page content -->
-    <div class = "content">
+    <div class="content">
         <p>yippe</p>
     </div>
+
+    <div>
+        <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">Syllabus Title</label>
+                <input type="text" name="title" id="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="syllabus">Upload Syllabus</label>
+                <input type="file" name="syllabus" id="syllabus" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+    <h2>Uploaded Syllabi</h2>
+    <ul>
+        {% for syllabus in classes %}
+        <li>{{ syllabus.title }} - <a href="{{ syllabus.syllabus_file.url }}" target="_blank">Download</a></li>
+        {% empty %}
+        <p>No syllabi uploaded yet.</p>
+        {% endfor %}
+    </ul>
 </body>
 
 </html>
 
-</DOCTYPE>
+</DOCTYPE!>
