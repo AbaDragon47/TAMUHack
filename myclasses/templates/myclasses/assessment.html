@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Quiz</title>
+    <title> Assessment </title>
 </head>
 <body>
     <h1>Simple Quiz</h1>
     <form id="quizForm">
         <div>
-            <label for="q1">Which of these is your ideal classroom?</label><br>
+            <label for="q1">1. Which of these is your ideal classroom?</label><br>
             <input type="radio" name="q1" value="kine1">
             <label>Group seating with hands-on projects</label><br>
             <input type="radio" name="q1" value="visual1">
@@ -17,46 +16,63 @@
             <input type="radio" name="q1" value="auditory1">
             <label>Quiet classroom with recorded lectures</label><br>
             <input type="radio" name="q1" value="reading1">
-            <label>Individual seats with lots of desk space for books</label><br>
+            <label>Individual seats with lots of desk space for books</label><br><br>
         </div>
         <div>
-            <label for="q2">2. What is 2 + 2?</label><br>
-            <input type="radio" name="q2" value="3">
-            <label>3</label><br>
-            <input type="radio" name="q2" value="4">
-            <label>4</label><br>
-            <input type="radio" name="q2" value="5">
-            <label>5</label><br>
+            <label for="q2">2. Which homework assignments would you rather have?</label><br>
+            <input type="radio" name="q2" value="reading2">
+            <label>Textbook readings, annotations, and essays</label><br>
+            <input type="radio" name="q2" value="kine2">
+            <label>Some practical application of what we're learning; such as a real-world survey and satastical analysis for a statistics class</label><br>
+            <input type="radio" name="q2" value="visual2">
+            <label>Making graphs, mindmaps, or anything else with a high visual component</label><br>
+            <input type="radio" name="q2" value="auditory2">
+            <label>Take-home quiz on the lecture, or a podcast submission</label><br><br>
         </div>
         <div>
-            <label for="q3">3. Which is the largest planet in our Solar System?</label><br>
-            <input type="radio" name="q3" value="Earth">
-            <label>Earth</label><br>
-            <input type="radio" name="q3" value="Jupiter">
-            <label>Jupiter</label><br>
-            <input type="radio" name="q3" value="Mars">
-            <label>Mars</label><br>
+            <label for="q3">3. Which is the worst possible exam grade?</label><br>
+            <input type="radio" name="q3" value="kine3">
+            <label>Answering questions about a video</label><br>
+            <input type="radio" name="q3" value="auditory3">
+            <label>Essay about a reading assignment</label><br>
+            <input type="radio" name="q3" value="reading3">
+            <label> Listening comprehension </label><br>
+            <input type="radio" name="q3" value="visual3">
+            <label>Oral/debate exam</label><br>
         </div>
         <br>
         <button type="button" onclick="checkAnswers()">Submit</button>
-    </form>
-
+    </form><br>
     <div id="result"></div>
 
     <script>
         function checkAnswers() {
-            var correctAnswers = 0;
+            var kine = 0;
+            var audio = 0;
+            var read = 0;
+            var vis = 0;
             var form = document.forms['quizForm'];
 
             // Check answers
-            if (form['q1'].value === 'Paris') correctAnswers++;
-            if (form['q2'].value === '4') correctAnswers++;
-            if (form['q3'].value === 'Jupiter') correctAnswers++;
+            if (form['q1'].value === 'kine1') kine++;
+            if (form['q1'].value === 'audio1') audio++;
+            if (form['q1'].value === 'reading1') read++;
+            if (form['q1'].value === 'visual') vis++;
+
+            if (form['q2'].value === 'kine2') kine++;
+            if (form['q2'].value === 'audio2') audio++;
+            if (form['q2'].value === 'reading2') read++;
+            if (form['q2'].value === 'visual2') vis++;
+
+            if (form['q3'].value === 'kine3') kine++;
+            if (form['q3'].value === 'audio3') audio++;
+            if (form['q3'].value === 'reading3') read++;
+            if (form['q3'].value === 'visual3') vis++;
 
             // Show result
             var result = document.getElementById('result');
-            result.innerHTML = 'You got ' + correctAnswers + ' out of 3 correct!';
+            var text = 'You are ' + kine + '/3 ' + ' kinesthetic, ' + audio + '/3 ' + 'auditory, ' + read + '/3 ' + 'reading, and ' + vis + '/3 ' + 'visual';
+            result.innerHTML = text;
         }
     </script>
 </body>
-</html>
