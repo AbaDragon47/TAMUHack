@@ -24,7 +24,7 @@ class Note(models.Model):
     content = models.TextField()
     upload_date = models.DateTimeField(auto_now_add=True)
     note = models.FileField(upload_to='notes/')
-
+    className = models.ForeignKey(Syllabus, on_delete=models.CASCADE)
     def __str__(self):
         return self.title
 
