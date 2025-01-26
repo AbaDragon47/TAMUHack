@@ -52,11 +52,3 @@
     </form>
 </div>
 {% endblock %}
-
-<script>
-    const syllabusButton = document.getElementById('syllabus_button');
-    const fileChosen = document.getElementById('file_chosen');
-    syllabusButton.addEventListener('change', function() {
-        fileChosen.textContent = this.files[0].name;
-    });
-</script>
