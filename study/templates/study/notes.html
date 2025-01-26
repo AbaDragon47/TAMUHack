@@ -20,17 +20,19 @@
 </div>
 
 <!-- Notes Display -->
-    {% if notes_exist %}
+{% if notes_exist %}
 <div class="notes-container">
     {% for note in notes %}
-    <div class="note-block">
-        <div class="note-title">{{ note.title }}</div>
-        <div class="note-content">{{ note.content }}</div>
-        <hr>
-        <div class="note-summary">
-            <strong>Summary:</strong> {{ note.summary }}
-        </div>
-    </div>
+    <li>
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.content }}</p>
+        {% if note.summary %}
+        <strong>Summary:</strong>
+        <p>{{ note.summary }}</p>
+        {% else %}
+        <p><em>No AI summary available yet.</em></p>
+        {% endif %}
+    </li>
     {% endfor %}
 </div>
     {% else %}

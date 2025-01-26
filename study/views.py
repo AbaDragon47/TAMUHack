@@ -1,13 +1,15 @@
+from pydoc import classname
 import openai
 from django.shortcuts import render, get_object_or_404, redirect
-from users.models import Note
+from users.models import Note, Syllabus
 from django.conf import settings
 
-openai.api_key = "api key"
+openai.api_key = "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"
 
-def notes_view(request):
+def notes_view(request, title, syllabus_id):
     user = request.user
-    notes = Note.objects.filter(user=user)
+    selected_class = get_object_or_404(Syllabus, id=syllabus_id, title=title)
+    notes = Note.objects.filter(user=user,className=selected_class)
 
 
     if request.method == "POST":
@@ -16,91 +18,49 @@ def notes_view(request):
 
         if uploaded_file or pasted_text:
             content = ""
+            head = ""
+            summary = ""
 
             if uploaded_file:
                 content = uploaded_file.read().decode("utf-8")
-                title = "File Note"
+                head = "File Note"
             else:
                 # Use pasted text if no file is uploaded
                 content = pasted_text
-                title = "Pasted Note"
+                head = "Pasted Note"
 
             note = Note.objects.create(
                 user=user,
-                title=title,
+                title=head,
                 content=content,
+                className = selected_class
             )
 
             try:
-                response = openai.ChatCompletion.create(
-                    model="gpt-4",
-                    messages=[
-                        {"role": "system", "content": "Summarize the text below."},
-                        {"role": "user", "content": content},
-                    ],
-                    temperature=0.5,
-                )
-                note.summary = response["choices"][0]["message"]["content"]
+                response = openai.completions.create(
+                model="gpt-3.5-turbo",
+                prompt=f"Summarize the following text:\n{content}",
+                temperature=0.5,
+                max_tokens=100,  # Adjust as needed
+            )
+                summary = response["choices"][0]["text"].strip()
+                note.summary = summary
                 note.save()
-            except openai.error.OpenAIError as e:
+            except openai.OpenAIError as e:
                 note.summary = f"Error summarizing note: {str(e)}"
                 note.save()
 
-        # Redirect to the same page after handling the request
-        return redirect("notes")
 
     # Check if there are any notes and pass a flag
     notes_exist = notes.exists()
 
-    return render(request, "notes.html", {
+    for note in notes:
+        print(f"Note title: {note.title}, Summary: {note.summary}")
+
+    return render(request, "study/notes.html", {
+        "title":title,
+        "syllabus_id":syllabus_id,
         "notes": notes,
-        "notes_exist": notes_exist
+        "notes_exist": notes_exist,
+        "selected_class": selected_class,
     })
-
-def upload_note_view(request):
-    if request.method == "POST":
-        uploaded_file = request.FILES.get("note_file")
-        if uploaded_file:
-            # Read file content
-            file_content = uploaded_file.read().decode("utf-8")
-
-            # Save note
-            Note.objects.create(
-                user=request.user,  # Assuming notes are tied to the logged-in user
-                title=os.path.basename(uploaded_file.name),  # Use the filename as the title
-                content=file_content,
-            )
-
-        return redirect("notes_page")  # Redirect back to the notes page
-    return redirect("notes_page")
-
-def summarize_note_view(request, note_id):
-    try:
-        note = Note.objects.get(id=note_id)
-    except Note.DoesNotExist:
-        pass
-
-    
-    summary = None
-
-    if request.method == "POST":
-        try:
-            # OpenAI API call for summarization
-            response = openai.ChatCompletion.create(
-                model="gpt-4",
-                messages=[
-                    {"role": "system", "content": "Summarize the text below."},
-                    {"role": "user", "content": note.content},
-                ],
-                temperature=0.5,
-            )
-            summary = response["choices"][0]["message"]["content"]
-
-            # Save the summary if needed
-            note.summary = summary
-            note.save()
-
-        except openai.error.OpenAIError as e:
-            summary = f"Error: {str(e)}"
-
-    return render(request, "notes.html", {"note": note, "summary": summary})

@@ -10,11 +10,12 @@
         {% endblock %}
 
         <div class="tile">
-            <h2>Notes</h2>
+            <h2><a href="{% url 'notes' title=syllabus.title class_id=syllabus.class_id %}">Notes</a></h2>
             <p>
                 {% block notes %}
                 {{ notes }}
                 {% endblock %}
+
             </p>
         </div>
 
