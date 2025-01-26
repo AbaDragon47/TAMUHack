@@ -9,23 +9,24 @@
             <link rel="stylesheet" href="../../static/css/styles.css">
         {% endblock %}
         
-        <div class="tile">
-            <h2>Notes</h2>
-            <p>
-                {% block notes %}
-                    {{ notes }}
-                {% endblock %}
-            </p>
-        </div>
-        
-        <div class="tile">
-            <h2>Topics</h2>
-            <p>
-                {% block topics %}
-                    {{ topics }}
-                {% endblock %}
-            </p>
-        </div>
     </header>
+
+    <div class="tile" >
+        <h2>Notes</h2>
+        <p>
+            {% block notes %}
+                {{ notes }}
+            {% endblock %}
+        </p>
+    </div>
+    
+    <div class="tile">
+        <h2>Topics</h2>
+        <p>
+            {% block topics %}
+                {{ topics }}
+            {% endblock %}
+        </p>
+    </div>
 </div>
 {% endblock %}
