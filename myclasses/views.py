@@ -10,3 +10,6 @@ def myClasses(request):
 
 def upload(request):
     return render(request,'myclasses/upload_page.html',{'title':'Upload'})
+
+def performance(request):
+    return render(request, 'performance/perf.html',{'title':'Performance'})
