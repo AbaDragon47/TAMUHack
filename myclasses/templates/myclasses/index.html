@@ -3,22 +3,12 @@
 {% block title %}Welcome!{% endblock %}
 
 {% block content %}
-<header>Welcome!</header><br>
-<div>
-    <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="title">Syllabus Title</label>
-            <input type="text" name="title" id="title" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="syllabus">Upload Syllabus</label>
-            <input type="file" name="syllabus" id="syllabus" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
-    </form>
-</div>
-<h2>Uploaded Syllabi</h2>
+<header><h1>Welcome to Mucera!</h1>
+    <h2>Upload a Syllabus or Log In To Get Started!</h2>
+</header>
+<br>
+<h1>Dashboard</h1>
+<h2>Uploaded Files:</h2>
 <ul>
     {% for syllabus in classes %}
     <li>{{ syllabus.title }} - <a href="{{ syllabus.syllabus_file.url }}" target="_blank">Download</a></li>
@@ -35,4 +25,32 @@
     {% endfor %}
     </section>
 </ul>
+
+<!-- Upload Syllabus Form -->
+ <br><hr>
+ <div class="form-group">
+    <h1>Want to Add Another Class?</h1>
+    <h2>Upload A Syllabus Below!</h2>
+    <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Syllabus Title</label>
+            <input type="text" name="title" id="title" class="form-control" required>
+        </div> <br>
+        <div class="form-group">
+            <input type="file" name="syllabus" id="syllabus_button" class="form-control" required hidden>
+            <label for="syllabus_button">Upload Syllabus</label>
+            <span id="file-chosen">No Syllabus chosen</span>
+        </div> <br>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
 {% endblock %}
+
+<script>
+    const syllabusButton = document.getElementById('syllabus_button');
+    const fileChosen = document.getElementById('file_chosen');
+    syllabusButton.addEventListener('change', function() {
+        fileChosen.textContent = this.files[0].name;
+    });
+</script>
