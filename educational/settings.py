@@ -31,9 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'myclasses.apps.MyclassesConfig',
-    'study.apps.StudyConfig',
-    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -115,7 +112,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-LOGIN_REDIRECT_URL = 'site-home'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
