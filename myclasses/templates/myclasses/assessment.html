@@ -1,3 +1,4 @@
+from .models import StudyLog, UserBadge, UserPerformance
 
 <head>
     <meta charset="UTF-8">
@@ -64,10 +65,10 @@
             if (form['q2'].value === 'reading2') read++;
             if (form['q2'].value === 'visual2') vis++;
 
-            if (form['q3'].value === 'kine3') kine++;
-            if (form['q3'].value === 'audio3') audio++;
-            if (form['q3'].value === 'reading3') read++;
-            if (form['q3'].value === 'visual3') vis++;
+            if (form['q3'].value === 'kine3') ++kine;
+            if (form['q3'].value === 'audio3') ++audio;
+            if (form['q3'].value === 'reading3') ++read;
+            if (form['q3'].value === 'visual3') ++vis;
 
             // Show result
             var result = document.getElementById('result');
