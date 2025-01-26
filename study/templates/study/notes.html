@@ -1,21 +1,43 @@
 {% extends 'myclasses/base.html' %}
 {% block title %} Notes
 <link rel="stylesheet" href="../../static/css/styles.css">{% endblock %}
-
-{% block content %} <header>Notes</<div class="form-group">
-    <form action="{% url 'notes' %}" method="POST" enctype="multipart/form-data">
+{% block content %} <header>Notes</header>
+{% block notematerial %}
+<h1>my Note</h1>
+<div class="upload-container">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group">
-            <label for="title">Syllabus Title</label>
-            <input type="text" name="title" id="title" class="form-control" required>
-        </div> <br>
-        <div class="form-group">
-            <label for="syllabus">Upload Syllabus</label>
-            <input type="file" name="syllabus" id="syllabus" class="form-control" required>
-            <p id = "fileName"></p></span>
-        </div> <br>
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <div>
+            <label for="note_file">Upload a File:</label>
+            <input type="file" name="note_file" id="note_file" accept=".txt,.pdf">
+        </div>
+        <div>
+            <label for="note_text">Or Paste Your Notes:</label>
+            <textarea name="note_text" id="note_text" placeholder="Paste your notes here..."></textarea>
+        </div>
+        <button type="submit" class="upload-button">Upload & Summarize</button>
     </form>
-</div>header>
-{% block notematerial %}{% endblock %}
+</div>
+
+<!-- Notes Display -->
+{% if notes_exist %}
+<div class="notes-container">
+    {% for note in notes %}
+    <li>
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.content }}</p>
+        {% if note.summary %}
+        <strong>Summary:</strong>
+        <p>{{ note.summary }}</p>
+        {% else %}
+        <p><em>No AI summary available yet.</em></p>
+        {% endif %}
+    </li>
+    {% endfor %}
+</div>
+    {% else %}
+<p>No notes yet. Please upload some notes.</p>
+    {% endif %}
+
+{% endblock notematerial %}
 {% endblock %}
