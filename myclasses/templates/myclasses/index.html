@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>My Classes</title>
+    <title>Home </title>
     <meta charset="UTF-8">
     <meta name ="viewport" content=""width=device-width, initial_scale="1.0">
     <link rel="stylesheet" href="../../static/css/styles.css">
@@ -11,7 +11,9 @@
 <body>
     <div class = "sidebar">
        <a class = "active" href="{% url 'login' %}">Login</a>
+       <a href="{% url 'myClasses' %}"> My Classes </a>
        <a href="{% url 'upload' %}">Upload Documents </a>
+       <a href="{% url 'performance' %}"> Performance </a>
        <!-- COPY, REPEAT-->
     </div>
 
