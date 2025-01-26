@@ -124,3 +124,8 @@ footer {
         margin-left: 0.3rem;
         font-family: 'Times New Roman', Times, serif;
     }
+
+.form-group {
+    max-width: fit-content;
+    margin-inline: auto;
+}

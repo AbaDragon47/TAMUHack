@@ -7,22 +7,7 @@
     <h2>Upload a Syllabus or Log In To Get Started!</h2>
 </header>
 <br>
-<div>
-    <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="title">Syllabus Title</label>
-            <input type="text" name="title" id="title" class="form-control" required>
-        </div> <br>
-        <div class="form-group">
-            <input type="file" name="syllabus" id="syllabus_button" class="form-control" required hidden>
-            <label for="syllabus_button">Upload Syllabus</label>
-            <span id="file-chosen">No Syllabus chosen</span>
-        </div> <br>
-        <button type="submit" class="btn btn-primary">Upload</button>
-    </form>
-</div>
-<h2>Uploaded Syllabi</h2>
+<h1>Uploaded Syllabi</h1>
 <ul>
     {% for syllabus in classes %}
     <li>{{ syllabus.title }} - <a href="{{ syllabus.syllabus_file.url }}" target="_blank">Download</a></li>
@@ -45,6 +30,25 @@
     {% endfor %}
     </section>
 </ul>
+
+<!-- Upload Syllabus Form -->
+<div class="form-group">
+    <h1>Want to Add Another Class?</h1>
+    <h2>Upload A Syllabus Below!</h2>
+    <form action="{% url 'site-home' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Syllabus Title</label>
+            <input type="text" name="title" id="title" class="form-control" required>
+        </div> <br>
+        <div class="form-group">
+            <input type="file" name="syllabus" id="syllabus_button" class="form-control" required hidden>
+            <label for="syllabus_button">Upload Syllabus</label>
+            <span id="file-chosen">No Syllabus chosen</span>
+        </div> <br>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
 {% endblock %}
 
 <script>
