@@ -21,12 +21,6 @@
     {% for syllabus in classes %}
     <div class="tile">
         <h2>{{syllabus.title}}</h2>
-        <p>
-            {%
-                make_file = open(syllabus.title + "_class.html", w)
-                make_file.write()
-            %}
-        </p>
     </div>
     {% endfor %}
     </section>
