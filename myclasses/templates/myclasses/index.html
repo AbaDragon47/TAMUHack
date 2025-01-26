@@ -43,11 +43,16 @@
     </div>
     <h2>Uploaded Syllabi</h2>
     <ul>
+        <section class="tiles-container"></section>
         {% for syllabus in classes %}
         <li>{{ syllabus.title }} - <a href="{{ syllabus.syllabus_file.url }}" target="_blank">Download</a></li>
+        
+
+        
         {% empty %}
         <p>No syllabi uploaded yet.</p>
         {% endfor %}
+        </section>section>
     </ul>
 </div>
 </body>
