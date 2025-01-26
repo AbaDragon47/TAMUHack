@@ -1,11 +1,13 @@
 {% extends 'myclasses/base.html' %}
+{%block content%}
+<div class="content">
+    <header>
+        <h1>My Classes</h1>
 
 {% block title %}My Classes
 <link rel="stylesheet" href="../../static/css/styles.css">{% endblock %}
             
 {% block content %}
-<DOCTYPE! html>
-    <html lang="en">
         <div class="tile">
             <h2>Notes</h2>
             <p>
@@ -18,5 +20,7 @@
                 {% block notes %} {% endblock %}
             </p>
         </div>
-    </html>
 {% endblock %}
+    </header>
+</div>
+{%endblock content%}

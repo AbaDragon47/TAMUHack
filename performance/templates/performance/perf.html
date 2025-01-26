@@ -1,4 +1,32 @@
 {% extends 'myclasses/base.html' %}
+{% block title %}My Performance{% endblock %}
 <div class="content">
-    <h1>performance</h1>
+    {% block content %}
+    <h1>{{ user.username }}'s Profile</h1>
+
+    <h2>Recent Study Sessions</h2>
+    <ul>
+        {% for log in study_logs %}
+        <li>{{ log.subject }} - {{ log.study_time }} minutes ({{ log.timestamp }})</li>
+        {% empty %}
+        <p>No study sessions recorded yet.</p>
+        {% endfor %}
+    </ul>
+
+    <h2>Badges Earned</h2>
+    <ul>
+        {% for user_badge in badges %}
+        <li>
+            <img src="{{ user_badge.badge.image.url }}" alt="{{ user_badge.badge.name }} Badge" />
+            {{ user_badge.badge.name }} - Earned on: {{ user_badge.earned_on }}
+        </li>
+        {% empty %}
+        <p>No badges earned yet.</p>
+        {% endfor %}
+    </ul>
+
+    <h2>Performance Metrics</h2>
+    <p>Total Study Time: {{ total_study_time }} minutes</p>
+    <p>Total Badges Earned: {{ performance.total_badges }}</p>
+    {% endblock %}
 </div>
