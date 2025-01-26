@@ -13,11 +13,12 @@
         <div class="form-group">
             <label for="title">Syllabus Title</label>
             <input type="text" name="title" id="title" class="form-control" required>
-        </div>
+        </div> <br>
         <div class="form-group">
-            <label for="syllabus">Upload Syllabus</label>
-            <input type="file" name="syllabus" id="syllabus" class="form-control" required>
-        </div>
+            <input type="file" name="syllabus" id="syllabus_button" class="form-control" required hidden>
+            <label for="syllabus_button">Upload Syllabus</label>
+            <span id="file-chosen">No Syllabus chosen</span>
+        </div> <br>
         <button type="submit" class="btn btn-primary">Upload</button>
     </form>
 </div>
@@ -45,3 +46,11 @@
     </section>
 </ul>
 {% endblock %}
+
+<script>
+    const syllabusButton = document.getElementById('syllabus_button');
+    const fileChosen = document.getElementById('file_chosen');
+    syllabusButton.addEventListener('change', function() {
+        fileChosen.textContent = this.files[0].name;
+    });
+</script>

@@ -109,3 +109,18 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+    label {
+        background-color: #532980;
+        color: #fdfdff;
+        padding: 0.5rem;
+        font-family:'Times New Roman', Times, serif;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        margin-top: 100px;
+    }
+
+    #file-chosen{
+        margin-left: 0.3rem;
+        font-family: 'Times New Roman', Times, serif;
+    }
