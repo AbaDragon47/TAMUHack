@@ -1,8 +1,8 @@
-<<<<<<< Updated upstream
+
 from django.shortcuts import render
 
 # Create your views here.
-=======
+
 from pydoc import classname
 import google.generativeai as genai
 from django.shortcuts import render, get_object_or_404, redirect
@@ -69,4 +69,3 @@ def notes_view(request, title, syllabus_id):
         "notes_exist": notes_exist,
         "selected_class": selected_class,
     })
->>>>>>> Stashed changes
