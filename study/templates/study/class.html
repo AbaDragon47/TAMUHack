@@ -8,7 +8,6 @@
         <h2>{% block thisclass %}{{ syllabus.title }}{% endblock %}</h2>
         <link rel="stylesheet" href="../../static/css/styles.css">
         {% endblock %}
-
         <div class="tile">
             <h2><a href="{% url 'notes' title=syllabus.title class_id=syllabus.class_id %}">Notes</a></h2>
             <p>
@@ -32,5 +31,25 @@
             <h2>TBD</h2>
         </div>
     </header>
+
+    <div class="tiles-container">
+    <div class="tile" >
+        <h2>Notes</h2>
+        <p>
+            {% block notes %}
+                {{ notes }}
+            {% endblock %}
+        </p>
+    </div>
+    
+    <div class="tile">
+        <h2>Topics</h2>
+        <p>
+            {% block topics %}
+                {{ topics }}
+            {% endblock %}
+        </p>
+    </div>
+</div>
 </div>
 {% endblock %}
